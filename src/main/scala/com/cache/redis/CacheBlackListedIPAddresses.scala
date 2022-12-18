@@ -18,12 +18,8 @@ object CacheBlackListedIPAddresses {
 
   def getJedisCluster : JedisCluster = {
     val hostAndPortNodes = new util.HashSet[HostAndPort]
-    hostAndPortNodes.add(new HostAndPort("localhost", 6379))
-    hostAndPortNodes.add(new HostAndPort("localhost", 6380))
+    hostAndPortNodes.add(new HostAndPort("localhost", 7000))
+    hostAndPortNodes.add(new HostAndPort("localhost", 7001))
     new JedisCluster(hostAndPortNodes)
   }
-
-  val jedis = getJedisResource
-  jedis.sadd("department", "IT")
-  println(jedis.smembers("department"))
 }
